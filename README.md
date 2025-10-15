@@ -2,6 +2,9 @@
 
 This repository contains a project that focuses on reconstructing an original video from a shuffled and corrupted frame sequence.
 
+
+![Video Processing Demo](images/foto.PNG)
+
 ## Project Overview
 
 A random segment of a source video was selected.

@@ -14,6 +14,7 @@ from utils import (
     clean_frames,
     convert_to_browser_mp4,
     get_clip_features,
+    get_features,
     reconstruct_order,
     make_video,
 )
@@ -74,7 +75,7 @@ def main(args):
     clean_features = pca.fit_transform(clean_features)
 
     ordered_paths = reconstruct_order(
-        clean_paths, clean_features, w_feat=w_feat, w_motion=w_motion, smoothing=True
+        clean_paths, clean_features, w_feat=1, w_motion=0, smoothing=True
     )
 
     for idx, p in enumerate(ordered_paths, start=1):
