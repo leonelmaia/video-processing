@@ -45,7 +45,7 @@ Generate reconstructed videos (including reversed versions).
 
 Python 3.12
 
-OpenCV, NumPy, scikit-learn, TensorFlow/Keras, PyTorch ...
+OpenCV, NumPy, scikit-learn, TensorFlow/Keras ...
 
 CLIP for deep visual embeddings
 
