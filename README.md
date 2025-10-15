@@ -55,7 +55,7 @@ FFMPEG (via imageio-ffmpeg) for video encoding
 The objective is to demonstrate your algorithm and justify your design choices. The code should be self-contained and runnable for review before the interview.
 
 
-## How to use
+## How to use ?
 
 1. Create and activate a virtual environment
 ```
@@ -75,5 +75,12 @@ pip install -r requirements.txt
 ```
 python process_video.py
  ``` 
+
+Then, access : http://127.0.0.1:7860/
+
+
+4. OPTIONAL
+```
+python main.py --video corrupted_video.mp4
+ ```
  
-Access : http://127.0.0.1:7860/
