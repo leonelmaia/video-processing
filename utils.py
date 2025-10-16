@@ -198,7 +198,7 @@ def clean_frames(
     return clean_paths, clean_embeddings, clean_labels
 
 
-def find_start_frame(features, frames, alpha=0.8, beta=0.1, gamma=0.1):
+def find_start_frame(features, frames, alpha=1, beta=0, gamma=0):
     """
     Estimate the most likely starting frame in a shuffled or unordered video sequence.
 
@@ -402,7 +402,7 @@ def reconstruct_order(
     """
     frames = [cv2.imread(p) for p in clean_paths]
     start_frame_index, _ = find_start_frame(
-        clean_features, frames, alpha=w_feat, beta=w_motion
+        clean_features, frames, alpha=1, beta=0, gamma=0
     )
     n = len(clean_paths)
     D_feat = 1 - cosine_similarity(clean_features)
@@ -440,6 +440,16 @@ def reconstruct_order(
         path = motion_finetune(path, frames, window=5)
     ordered_paths = [clean_paths[i] for i in path]
     print(f"TSP ordering done, {len(path)} frames.")
+
+    frames = [cv2.imread(p) for p in ordered_paths[:-1]]
+    start_frame_index, _ = find_start_frame(
+        clean_features, frames, alpha=w_feat, beta=w_motion, gamma=0
+    )
+    start_index = np.where(path == start_frame_index)[0][0]
+    reordered_path = np.concatenate((path[start_index:], path[:start_index])).astype(
+        int
+    )
+    ordered_paths = [clean_paths[i] for i in reordered_path]
     return ordered_paths
 
 
